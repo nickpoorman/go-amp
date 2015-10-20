@@ -4,44 +4,39 @@ package amp
  * Protocol version.
  */
 
-var version uint32 = 1
-
-// PutUint32 encode unint32 into binary big endian
-func PutUint32(b []byte, v uint32) {
-	b[0] = byte(v >> 24)
-	b[1] = byte(v >> 16)
-	b[2] = byte(v >> 8)
-	b[3] = byte(v)
-}
+var version = 1
 
 // Encode `args`.
 func Encode(args [][]byte) []byte {
 	argc := len(args)
-	buffLen := 1
+	bufl := 1
 
 	// data length
 	for i := 0; i < argc; i++ {
-		buffLen += 4 + len(args[i])
+		bufl += 4 + len(args[i])
 	}
 
 	// buffer
-	buff := make([]byte, buffLen)
+	buf := make([]byte, bufl)
 
 	// pack meta
-	PutUint32(buff[0:1], ((version << 4) | uint32(argc)))
-	buff = buff[1:]
+	buf[0] = byte((version << 4) | argc)
+	buf = buf[1:]
 
 	// pack args
 	for i := 0; i < argc; i++ {
 		arg := args[i]
-		argLen := len(arg)
+		argl := uint32(len(arg))
 
-		PutUint32(buff[0:4], uint32(argLen))
-		buff = buff[4:]
+		buf[0] = byte(argl >> 24)
+		buf[1] = byte(argl >> 16)
+		buf[2] = byte(argl >> 8)
+		buf[3] = byte(argl)
+		buf = buf[4:]
 
-		copy(buff, arg)
-		buff = buff[argLen:]
+		copy(buf, arg)
+		buf = buf[argl:]
 	}
 
-	return buff
+	return buf
 }
