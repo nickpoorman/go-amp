@@ -3,9 +3,9 @@ package amp
 // Decode the given `buf`.
 func Decode(buf []byte) [][]byte {
 	// unpack meta
-	meta := int(buf[0])
+	meta := uint8(buf[0])
 	// version := meta >> 4
-	argv := meta & 0xf
+	argv := int(meta & 0xf)
 	args := make([][]byte, argv)
 	buf = buf[1:]
 
@@ -14,6 +14,8 @@ func Decode(buf []byte) [][]byte {
 		buf = buf[4:]
 
 		args[i] = buf[0:argl]
+
+		buf = buf[argl:]
 	}
 
 	return args
