@@ -1,9 +1,6 @@
 package amp
 
-/**
- * Protocol version.
- */
-
+// Protocol version.
 var version uint8 = 1
 
 // Encode `args`.
