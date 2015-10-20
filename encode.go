@@ -34,9 +34,9 @@ func Encode(args [][]byte) []byte {
 	// pack args
 	for i := 0; i < argc; i++ {
 		arg := args[i]
-		argLen := uint32(len(arg))
+		argLen := len(arg)
 
-		PutUint32(buff[0:4], argLen)
+		PutUint32(buff[0:4], uint32(argLen))
 		buff = buff[4:]
 
 		copy(buff, arg)
