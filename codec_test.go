@@ -22,3 +22,16 @@ func TestAMP(t *testing.T) {
 		t.Errorf("expected %s to equal World", msg[1])
 	}
 }
+
+func TestAMPNoArgs(t *testing.T) {
+
+	// it should support no args
+	args := [][]byte{}
+
+	bin := Encode(args)
+	msg := Decode(bin)
+
+	if len(msg) != 0 {
+		t.Errorf("expected %s to be empty", msg)
+	}
+}
