@@ -36,7 +36,7 @@ TODO
 
  - [c](https://github.com/clibs/amp) (~10m ops/s)
  - [node](https://github.com/visionmedia/node-amp) (~1.5m ops/s)
- - [golang](https://github.com/nickpoorman/go-amp) this library --not yet benchmarked
+ - [golang](https://github.com/nickpoorman/go-amp) this library (~6.2m ops/s)
 
 # License
 

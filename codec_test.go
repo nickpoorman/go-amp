@@ -30,3 +30,20 @@ func TestAMPNoArgs(t *testing.T) {
 		t.Errorf("expected %s to be empty", msg)
 	}
 }
+
+func BenchmarkEncode(b *testing.B) {
+	args := [][]byte{[]byte("foo"), []byte("bar"), []byte("baz")}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		Encode(args)
+	}
+}
+
+func BenchmarkDecode(b *testing.B) {
+	args := [][]byte{[]byte("foo"), []byte("bar"), []byte("baz")}
+	bin := Encode(args)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		Decode(bin)
+	}
+}
