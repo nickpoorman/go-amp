@@ -11,7 +11,12 @@ $ go get github.com/nickpoorman/go-amp
 
 ## Example
 
-TODO
+```
+args := [][]byte{[]byte("Hello"), []byte("World")}
+bin := Encode(args)
+msg := Decode(bin)
+fmt.Printf("%s\n", msg)
+```
 
 ## Protocol
 

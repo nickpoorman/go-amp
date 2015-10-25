@@ -82,7 +82,7 @@ func (p *Parser) Write(chunk []byte) (n int, err error) {
 	return 0, nil
 }
 
-// NewParser will take in a stream and write out to a channel
+// NewParser instantiate a new Parser that parses a stream and writes the results to the given channel
 func NewParser(data chan<- bytes.Buffer) *Parser {
 	lenbuf := make([]byte, 4)
 
