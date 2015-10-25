@@ -1,11 +1,6 @@
-package amp_test
+package amp
 
-import (
-	"fmt"
-	"testing"
-
-	. "github.com/nickpoorman/go-amp"
-)
+import "testing"
 
 func TestAMP(t *testing.T) {
 
@@ -14,12 +9,12 @@ func TestAMP(t *testing.T) {
 	bin := Encode(args)
 	msg := Decode(bin)
 
-	if fmt.Sprintf("%s", msg[0]) != "Hello" {
-		t.Errorf("expected %s to equal Hello", msg[0])
+	if want, have := "Hello", string(msg[0]); want != have {
+		t.Errorf("want %#v, have %#v", want, have)
 	}
 
-	if fmt.Sprintf("%s", msg[1]) != "World" {
-		t.Errorf("expected %s to equal World", msg[1])
+	if want, have := "World", string(msg[1]); want != have {
+		t.Errorf("want %#v, have %#v", want, have)
 	}
 }
 

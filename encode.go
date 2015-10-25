@@ -1,7 +1,7 @@
 package amp
 
 // Protocol version.
-var version uint8 = 1
+var ProtocolVersion uint8 = 1
 
 // Encode `args`.
 func Encode(args [][]byte) []byte {
@@ -18,7 +18,7 @@ func Encode(args [][]byte) []byte {
 	buff := buf // keep a ref to head
 
 	// pack meta
-	buf[0] = byte((version << 4) | uint8(argc))
+	buf[0] = byte((ProtocolVersion << 4) | uint8(argc))
 	buf = buf[1:]
 
 	// pack args

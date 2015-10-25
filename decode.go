@@ -5,6 +5,9 @@ func Decode(buf []byte) [][]byte {
 	// unpack meta
 	meta := uint8(buf[0])
 	// version := meta >> 4
+	// if version != ProtocolVersion {
+	// 	panic("AMP protocol version does not equal 1.")
+	// }
 	argv := int(meta & 0xf)
 	args := make([][]byte, argv)
 	buf = buf[1:]
