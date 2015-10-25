@@ -11,7 +11,7 @@ $ go get github.com/nickpoorman/go-amp
 
 ## Example
 
-``` golang
+```go
 args := [][]byte{[]byte("Hello"), []byte("World")}
 bin := Encode(args)
 msg := Decode(bin)
