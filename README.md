@@ -3,6 +3,8 @@
 
   Abstract Message Protocol codec and streaming parser for golang.
 
+  [Godoc](https://godoc.org/github.com/nickpoorman/go-amp)
+
 ## Installation
 
 ```
